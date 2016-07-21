@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 
+# importy zewnetrzne
+
+
+# nasze importy
 from Widok import *
 from Kontroler import *
 from Model import *
+
 
 #===== Inicjalizacja
 widok = Widok()
@@ -14,7 +19,6 @@ model.dodajKontroler(kontroler)
 model.dodajWidok(widok)
 
 
-
-#===== Logowanie
+#===== Start gry
 widok.menu()
 

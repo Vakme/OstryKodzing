@@ -1,15 +1,26 @@
 #!/usr/bin/env python
 
+# importy zewnetrzne
+
+
+# nasze importy
 from Stale import *
+
+
+#===================================== Na czas testow
+Gracz = {"nick"          :"user", 
+         "haslo"         :"123", 
+         "ip"            :"212.191.227.106", 
+         "nazwaSerwera"  :"LocalHome"}
+#===================================================#
+
 
 class Model:
    def __init__(self, nowyKontroler = 0, nowyWidok = 0) :
       self.kontroler = nowyKontroler
       self.widok = nowyWidok
       self.error = 0
-#===================================== Na czas testow
-      self.gracz = {"nick":"user", "haslo":"pass123"}
-#===================================================#
+      self.gracz = None
 
 
    def dodajKontroler(self, nowyKontroler) :
@@ -22,10 +33,23 @@ class Model:
          self.widok = nowyWidok
 
 
-   def pobierzDane(nick, haslo) :
+   def pobierzDaneStare(self, nick, haslo) :  #===== DO USUNIECIA po aktualizacji logowania
+      self.pobierzDane(Zadania["Login"])
+
+
+   def pobierzDane(self, idZadania) :
+      if idZadania == Zadania["Login"] :
+         self.zaloguj()
+
+
+   def zaloguj(self) :
 #=================================== Na czas testow
-      if nick != self.gracz["nick"] :
+      if self.widok.nick != Gracz["nick"] :
          self.error = Error["zlyNick"]
-      if haslo != self.gracz["haslo"] :
+         return
+      if self.widok.haslo != Gracz["haslo"] :
          self.error = Error["zleHaslo"]
+         return
+      self.gracz = Gracz
 #=================================================#
+      self.error = Error["brakBledow"]

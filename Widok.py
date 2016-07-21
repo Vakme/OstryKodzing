@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 
+# importy zewnetrzne
+#from __future__ import print_function
+
+
+# nasz importy
 from Stale import *
 from Kontroler import *
 
+
 class Widok:
-   def __init__(self, nowyKontroler = 0, nowyModel = 0) :
-      self.kontroler = nowyKontroler
-      self.model = nowyModel
-      self.idZadania = 0                                 # ID danych, ktore kontroler musi pobrac
+   def __init__(self) :
+      self.kontroler = 0
+      self.model = 0
+      pass
 
 
    def dodajKontroler(self, nowyKontroler) :
@@ -20,12 +26,6 @@ class Widok:
          self.model = nowyModel
 
 
-   def powiadomKontroler(self, noweIdZadania) : # Na podstawie idZadania Kontroler pobiera dane z Widoku
-      if type(self.kontroler) == type(Kontroler) :
-         self.idZadania = noweIdZadania
-         self.kontroler.aktualizacja()
-
-
    def czyscEkran(self) :
       # print '\033[2j\033[0;0h'
       print '\x1b[2J\x1b[H'
@@ -35,7 +35,7 @@ class Widok:
       self.czyscEkran()
       print "dostepne komendy:"
       print "login"
-      print "exit"
+      print "exit\n"
       cmd = 0
       while True :
          cmd = raw_input()
@@ -52,8 +52,21 @@ class Widok:
             self.czyscEkran()
             print "dostepne komendy:"
             print "login"
-            print "exit"
-      if cmd == exit :
+            print "exit\n"
+      if cmd == "exit" :
          self.czyscEkran()
          exit()
-      self.powiadomKontroler(Zadania["login"])
+      self.kontroler.aktualizacja(Zadania["Login"])
+
+
+   def obslugaKonsoli(self) : # Glowna petla gry, gdy juz jestesmy zalogowani
+      print self.model.gracz["nick"]+"@"+self.model.gracz["nazwaSerwera"]+" ~> ", 
+      cmd = raw_input() # pobieranie stringu wpisanego przez gracza
+      args = None
+      tab = cmd.split()
+      if len(tab) > 1 :
+         cmd, args = (tab[0], tab[1:]) # dzieli string na komende i jej atrybuty
+      if cmd in Zadania :
+         self.kontroler.aktualizacja(Zadania[cmd], args)
+      else :
+         self.kontroler.aktualizacja(Zadania["ZlePolecenie"], cmd)
