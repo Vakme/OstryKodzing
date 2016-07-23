@@ -34,10 +34,10 @@ class Kontroler:
       if idZadania == Zadania["ZlePolecenie"] :
          self.strategia = ZlePolecenie()
       elif idZadania == Zadania["Login"] :
-
-        self.strategia = login(self.widok,self.model)
+         args = ( self.model, self.widok, idZadania)
+         self.strategia = login()
       elif idZadania == Zadania["exit"] :
-         args = self.widok.czyscEkran
+         args =self.widok.czyscEkran
          self.strategia = exit()
 
       if self.strategia != 0 :
