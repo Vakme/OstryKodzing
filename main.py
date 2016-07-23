@@ -20,5 +20,9 @@ model.dodajWidok(widok)
 
 
 #===== Start gry
-#widok.menu()
-kontroler.aktualizacja(Zadania["Menu"])
+widok.czyscEkran()
+while not model.gracz :
+    kontroler.aktualizacja(Zadania["Menu"])
+widok.czyscEkran()
+kontroler.glownaPetla()
+
