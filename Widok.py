@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 # importy zewnetrzne
-#from __future__ import print_function
 
 
 # nasz importy
@@ -28,34 +27,6 @@ class Widok:
 
    def czyscEkran(self) :
       print '\x1b[2J\x1b[H'
-
-
-   def menu(self, args=None) : # Argumentem jest funkcja czyszczaca ekran
-      args()
-      print "dostepne komendy:"
-      print "login"
-      print "exit\n"
-      cmd = 0
-      while True :
-         cmd = raw_input()
-         if cmd == "login" :                    # login
-            self.czyscEkran()
-            print "Nick: "
-            self.nick = raw_input()
-            print "Haslo: "
-            self.haslo = raw_input()
-            break
-         elif cmd == "exit" :                   # exit
-            break
-         else :
-            self.czyscEkran()
-            print "dostepne komendy:"
-            print "login"
-            print "exit\n"
-      if cmd == "exit" :
-         self.czyscEkran()
-         exit()
-      self.kontroler.aktualizacja(Zadania["Login"])
 
 
    def obslugaKonsoli(self) : # Glowna petla gry, gdy juz jestesmy zalogowani

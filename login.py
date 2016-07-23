@@ -21,3 +21,17 @@ class login(Strategia):
         pass
     def main(self, args=None):  # Glowna funkcja podprogramu
         pass
+
+
+def main(self, args=None):  # Glowna funkcja podprogramu
+        args()
+        self.widok=nowyWidok
+        self.model=nowyModel
+        self.idZadania=idZadania
+        self.model.pobierzDane(self.idZadania)
+        self.widok.czyscEkran()
+
+        if self.model.error == 0:
+            print "Witaj " + self.widok.nick + "!"
+        else:
+            print "Zly nick i/lub haslo!"

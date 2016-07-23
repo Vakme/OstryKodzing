@@ -20,7 +20,6 @@ class Kontroler:
       self.model = nowyModel
       self.strategia = 0
 
-
    def dodajWidok(self, nowyWidok) :
       if self.widok == 0 :
          self.widok = nowyWidok
@@ -35,7 +34,8 @@ class Kontroler:
       if idZadania == Zadania["ZlePolecenie"] :
          self.strategia = ZlePolecenie()
       elif idZadania == Zadania["Login"] :
-        self.strategia = login(self.widok,self.model)
+         args = (self.model, self.widok)
+         self.strategia = login(self.widok,self.model)
       elif idZadania == Zadania["exit"] :
          args = self.widok.czyscEkran
          self.strategia = exit()

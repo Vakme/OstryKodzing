@@ -16,7 +16,7 @@ class exit(Strategia) :
       pass
 
 
-   def main(self, args=None) : # Argumentem jest funkcja sprzatajaca po programie
-      args()
+   def main(self, czyscEkran=None) : # Argumentem jest funkcja sprzatajaca po programie
+      czyscEkran()
       from sys import exit
       exit()
