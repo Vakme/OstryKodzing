@@ -10,7 +10,7 @@ from Stale import *
 # importy oparte o Strategie
 from ZlePolecenie import *
 from exit import *
-
+from login import *
 class Kontroler:
    def __init__(self, nowyWidok = 0, nowyModel = 0) :
       self.widok = nowyWidok
@@ -28,21 +28,14 @@ class Kontroler:
          self.model = nowyModel
 
 
-   def zaloguj(self) : 
-         self.model.pobierzDaneStare(self.widok.nick, self.widok.haslo)
-         self.widok.czyscEkran()
-         if self.model.error == 0 :
-            print "Witaj "+self.widok.nick+"!"
-         else :
-            print "Zly nick i/lub haslo!"
-            
 
-   def aktualizacja(self, idZadania, args=None): # analizuje dzialania usera i zleca wykonanie odpowiednich dzialan   
+
+   def aktualizacja(self, idZadania, args=None): # analizuje dzialania usera i zleca wykonanie odpowiednich dzialan
       if idZadania == Zadania["ZlePolecenie"] :
          self.strategia = ZlePolecenie()
       elif idZadania == Zadania["Login"] :
-         self.zaloguj()                         # DO ZMIANY!!!
-#        self.strategia = Zaloguj()
+
+        self.strategia = login(self.widok,self.model)
       elif idZadania == Zadania["exit"] :
          args = self.widok.czyscEkran
          self.strategia = exit()
