@@ -2,7 +2,8 @@
 
 Zadania = {"Login"         :0,
            "ZlePolecenie"  :1,
-           "exit"          :2}
+           "exit"          :2,
+           "Menu"         :3}
 
 
 Error = {"brakBledow"   :0,
