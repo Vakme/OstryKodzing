@@ -11,6 +11,9 @@ from Stale import *
 from ZlePolecenie import *
 from exit import *
 from login import *
+from Menu import *
+
+
 class Kontroler:
    def __init__(self, nowyWidok = 0, nowyModel = 0) :
       self.widok = nowyWidok
@@ -28,17 +31,22 @@ class Kontroler:
          self.model = nowyModel
 
 
-
-
    def aktualizacja(self, idZadania, args=None): # analizuje dzialania usera i zleca wykonanie odpowiednich dzialan
       if idZadania == Zadania["ZlePolecenie"] :
          self.strategia = ZlePolecenie()
       elif idZadania == Zadania["Login"] :
+<<<<<<< HEAD
          args = ( self.model, self.widok, idZadania)
          self.strategia = login()
+=======
+        self.strategia = login(self.widok,self.model)
+>>>>>>> origin/master
       elif idZadania == Zadania["exit"] :
          args =self.widok.czyscEkran
          self.strategia = exit()
+      elif idZadania == Zadania["Menu"] :
+         args = self
+         self.strategia = Menu()
 
       if self.strategia != 0 :
          self.strategia.main(args)

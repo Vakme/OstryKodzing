@@ -4,10 +4,10 @@
 
 
 # nasze importy
+from Menu import *
 from Widok import *
 from Kontroler import *
 from Model import *
-
 
 #===== Inicjalizacja
 widok = Widok()
@@ -20,5 +20,5 @@ model.dodajWidok(widok)
 
 
 #===== Start gry
-widok.menu()
-
+#widok.menu()
+kontroler.aktualizacja(Zadania["Menu"])

@@ -27,12 +27,11 @@ class Widok:
 
 
    def czyscEkran(self) :
-      # print '\033[2j\033[0;0h'
       print '\x1b[2J\x1b[H'
 
 
-   def menu(self) :
-      self.czyscEkran()
+   def menu(self, args=None) : # Argumentem jest funkcja czyszczaca ekran
+      args()
       print "dostepne komendy:"
       print "login"
       print "exit\n"
