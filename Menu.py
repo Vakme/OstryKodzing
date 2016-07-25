@@ -20,6 +20,7 @@ class Menu(Strategia) :
         print "dostepne komendy:"
         print "login"
         print "exit\n"
+
         cmd = None
         while True :
             cmd = raw_input()

@@ -12,7 +12,7 @@ from ZlePolecenie import *
 from exit import *
 from Login import *
 from Menu import *
-
+from Help import *
 
 class Kontroler:
     def __init__(self, nowyWidok = 0, nowyModel = 0) :
@@ -56,5 +56,7 @@ class Kontroler:
         elif idZadania == Zadania["Menu"] :
             args.append(self)
             self.strategia = Menu()
+        elif idZadania == Zadania["Help"] :
+            self.strategia = Help()
         if self.strategia != 0 :
             self.strategia.main(args)

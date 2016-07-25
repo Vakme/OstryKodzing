@@ -7,7 +7,7 @@
 from Strategia import *
 
 
-class ZlePolecenie(Strategia) :
+class Help(Strategia) :
    def pobierzDane(self, idZadania) :
       pass
 
@@ -18,4 +18,6 @@ class ZlePolecenie(Strategia) :
       pass
 
    def main(self,args=None):
-      print "Nie ma takiego polecenia \n Wpisz help aby zobaczyc liste polecen"
+      print "Help:\n"
+
+      print "exit - wyjscie\n"
