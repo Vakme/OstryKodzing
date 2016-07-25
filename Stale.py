@@ -10,3 +10,7 @@ Zadania = {"Login"         :0,
 Error = {"brakBledow"   :0,
          "zlyNick"      :1, 
          "zleHaslo"     :2}
+
+
+Type = {"txt"   :1,
+        "exec"  :2}

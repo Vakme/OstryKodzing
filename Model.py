@@ -12,6 +12,12 @@ Gracz = {"nick"          :"user",
          "haslo"         :"123", 
          "ip"            :"212.191.227.106", 
          "nazwaSerwera"  :"LocalHome"}
+
+Pliki =         {"/"            :None}
+Pliki["/"] =    {"bin"          :None,
+                 "hello.txt"    :Type["txt"]}
+Pliki["bin"] =  {"exit"         :Type["exec"]}
+
 #===================================================#
 
 
@@ -47,5 +53,6 @@ class Model:
             self.error = Error["zleHaslo"]
             return
         self.gracz = Gracz
+        self.pliki = Pliki
 #=================================================#
         self.error = Error["brakBledow"]

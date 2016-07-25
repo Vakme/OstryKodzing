@@ -34,7 +34,7 @@ class Menu(Strategia) :
             elif cmd == "exit" :                   # exit
                 break
             else :
-                self.kontroler.widok.czyscEkran()
+                kontroler.widok.czyscEkran()
                 print "dostepne komendy:"
                 print "login"
                 print "exit\n"
