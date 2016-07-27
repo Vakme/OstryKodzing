@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# importy zewnetrzne
+# importy zewnetrnzne
 
 
 # nasze importy
@@ -10,24 +10,31 @@ from Stale import *
 #===================================== Na czas testow
 Gracz = {"nick"          :"user", 
          "haslo"         :"123", 
-         "ip"            :"212.191.227.106", 
-         "nazwaSerwera"  :"LocalHome"}
+         "ip"            :"212.191.227.106",}
 
 Pliki =         {"/"            :None}
 Pliki["/"] =    {"bin"          :None,
                  "hello.txt"    :Type["txt"]}
-Pliki["bin"] =  {"exit"         :Type["exec"]}
+Pliki["/bin"] =  {"exit"         :Type["exec"]}
 
+NazwaSerwera = "HomeSerwer"
 #===================================================#
 
+class Serwer :
+    def __init__(self) :
+        self.pliki = None
+        self.nazwaSerwera = None
+        self.ip = None
+        self.pwd = '/' # sciezka do katalogu, w ktorym znajduje sie gracz
 
-class Model:
+
+class Model :
     def __init__(self, nowyKontroler = 0, nowyWidok = 0) :
         self.kontroler = nowyKontroler
         self.widok = nowyWidok
         self.error = 0
         self.gracz = None
-
+        self.serwer = Serwer()
 
     def dodajKontroler(self, nowyKontroler) :
         if self.kontroler == 0 :
@@ -53,6 +60,8 @@ class Model:
             self.error = Error["zleHaslo"]
             return
         self.gracz = Gracz
-        self.pliki = Pliki
+        self.serwer.pliki = Pliki
+        self.serwer.nazwaSerwera = NazwaSerwera
+        self.serwer.ip = Gracz["ip"]
 #=================================================#
         self.error = Error["brakBledow"]

@@ -31,7 +31,7 @@ class Widok:
 
     def obslugaKonsoli(self) : # Glowna petla gry, gdy juz jestesmy zalogowani
         if self.model.gracz != None :
-            print self.model.gracz["nick"]+"@"+self.model.gracz["nazwaSerwera"]+" ~> ", 
+            print self.model.gracz["nick"]+"@"+self.model.serwer.nazwaSerwera+" "+self.model.serwer.pwd+"> ", 
         cmd = raw_input() # pobieranie stringu wpisanego przez gracza
         args = None
         tab = cmd.split()

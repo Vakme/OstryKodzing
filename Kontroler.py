@@ -13,6 +13,8 @@ from exit import *
 from Login import *
 from Menu import *
 from Help import *
+from ls import *
+from cd import *
 
 class Kontroler:
     def __init__(self, nowyWidok = 0, nowyModel = 0) :
@@ -58,5 +60,11 @@ class Kontroler:
             self.strategia = Menu()
         elif idZadania == Zadania["Help"] :
             self.strategia = Help()
+        elif idZadania == Zadania["ls"] :
+            args.append(self.model.serwer)
+            self.strategia = ls()
+        elif idZadania == Zadania["cd"] :
+            args.append(Args)
+            self.strategia = cd()
         if self.strategia != 0 :
             self.strategia.main(args)
