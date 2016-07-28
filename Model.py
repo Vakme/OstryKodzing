@@ -15,7 +15,10 @@ Gracz = {"nick"          :"user",
 Pliki =         {"/"            :None}
 Pliki["/"] =    {"bin"          :None,
                  "hello.txt"    :Type["txt"]}
-Pliki["/bin"] =  {"exit"         :Type["exec"]}
+Pliki["/bin"] =  {"exit"        :Type["exec"],
+                  "Help"        :Type["exec"],
+                  "ls"          :Type["exec"],
+                  "cd"          :Type["exec"]}
 
 NazwaSerwera = "HomeSerwer"
 #===================================================#

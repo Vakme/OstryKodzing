@@ -64,6 +64,7 @@ class Kontroler:
             args.append(self.model.serwer)
             self.strategia = ls()
         elif idZadania == Zadania["cd"] :
+            args.append(self.model.serwer)
             args.append(Args)
             self.strategia = cd()
         if self.strategia != 0 :
