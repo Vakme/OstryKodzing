@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 
-# importy zewnetrnzne
-
+# importy zewnetrzne
+import peewee
 
 # nasze importy
 from Stale import *
-
+#from BazaDanych import *
+#from Gracz import *
 
 #===================================== Na czas testow
-Gracz = {"nick"          :"user", 
+Gracz2 = {"nick"          :"user", 
          "haslo"         :"123", 
          "ip"            :"212.191.227.106",}
 
@@ -56,15 +57,15 @@ class Model :
 
     def zaloguj(self, args) : # potrzebuje w args: [nick, haslo]
 #=================================== Na czas testow
-        if args[0] != Gracz["nick"] :
+        if args[0] != Gracz2["nick"] :
             self.error = Error["zlyNick"]
             return
-        if args[1] != Gracz["haslo"] :
+        if args[1] != Gracz2["haslo"] :
             self.error = Error["zleHaslo"]
             return
-        self.gracz = Gracz
+        self.gracz = Gracz2
         self.serwer.pliki = Pliki
         self.serwer.nazwaSerwera = NazwaSerwera
-        self.serwer.ip = Gracz["ip"]
+        self.serwer.ip = Gracz2["ip"]
 #=================================================#
         self.error = Error["brakBledow"]
