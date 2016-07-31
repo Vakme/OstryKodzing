@@ -5,8 +5,8 @@ import peewee
 
 # nasze importy
 from Stale import *
-#from BazaDanych import *
-#from Gracz import *
+from BazaDanych import *
+from Gracz import *
 
 #===================================== Na czas testow
 Gracz2 = {"nick"          :"user", 
@@ -53,6 +53,21 @@ class Model :
     def pobierzDane(self, idZadania, args=None) :
         if idZadania == Zadania["Login"] :
             self.zaloguj(args)
+        elif idZadania == Zadania["register"] :
+            self.zarejestruj(args)
+
+
+    def zarejestruj(self, args) : # args: [nick, haslo]
+        import random
+        nowyGracz = None
+        while nowyGracz == None :
+            a = random.randrange(1,256)
+            b = random.randrange(0,256)
+            c = random.randrange(0,256)
+            d = random.randrange(0,256)
+            noweIP = str(a)+"."+str(b)+"."+str(c)+"."+str(d)
+            nowyGracz = Gracz.create(nick=args[0], haslo=args[1], ip=noweIP)
+        self.zaloguj(args[0], args[1]) 
 
 
     def zaloguj(self, args) : # potrzebuje w args: [nick, haslo]
@@ -68,4 +83,6 @@ class Model :
         self.serwer.nazwaSerwera = NazwaSerwera
         self.serwer.ip = Gracz2["ip"]
 #=================================================#
+        #db.connect()
+        #db.close()
         self.error = Error["brakBledow"]

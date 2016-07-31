@@ -6,7 +6,8 @@ Zadania = {"Login"          :0,
            "Menu"           :3,
            "Help"           :4,
            "ls"             :5,
-           "cd"             :6}
+           "cd"             :6,
+           "Register"       :7}
 
 
 Error = {"brakBledow"   :0,

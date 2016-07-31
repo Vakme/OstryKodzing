@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
+# importy zewnetrzne
+from BazaDanych import *
 
-class Gracz(peewee.Model) :
-    
-    class Meta :
-        database = db
+class Gracz(BazaModel) :
+    id = peewee.PrimaryKeyField()
+    nick = peewee.CharField() 
+    haslo = peewee.CharField()
+    ip = peewee.CharField()
