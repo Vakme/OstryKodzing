@@ -13,10 +13,10 @@ class ls :
         pass
 
 
-    def main(self, args=None) : # serwer jako argument
-        serwer = args[0]
-        for i,j in serwer.pliki[serwer.pwd].items() :
-            if j == None :
+    def main(self, args=None) : # model jako argument
+        model = args[0]
+        for i,j in model.serwer.pliki[model.gracz.pwd].items() :
+            if j == Type["dir"] :
                 print bcolors.BOLD+i+"\t"+bcolors.ENDC,
             elif j == Type["exec"] :
                 print bcolors.OKGREEN+i+"\t"+bcolors.ENDC,

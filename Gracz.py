@@ -9,3 +9,4 @@ class Gracz(BazaModel) :
     nick = peewee.CharField() 
     haslo = peewee.CharField()
     ip = peewee.CharField()
+    pwd = peewee.CharField()

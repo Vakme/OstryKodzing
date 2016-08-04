@@ -62,10 +62,10 @@ class Kontroler:
         elif idZadania == Zadania["help"] :
             self.strategia = help()
         elif idZadania == Zadania["ls"] :
-            args.append(self.model.serwer)
+            args.append(self.model)
             self.strategia = ls()
         elif idZadania == Zadania["cd"] :
-            args.append(self.model.serwer)
+            args.append(self.model)
             args.append(Args)
             self.strategia = cd()
         elif idZadania == Zadania["Register"] :

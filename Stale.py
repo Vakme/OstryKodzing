@@ -15,7 +15,8 @@ Error = {"brakBledow"   :0,
          "zleHaslo"     :2}
 
 
-Type = {"txt"   :1,
+Type = {"dir"   :0,
+        "txt"   :1,
         "exec"  :2}
 
 class bcolors:
