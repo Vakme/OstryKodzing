@@ -7,7 +7,7 @@
 from Strategia import *
 
 
-class Help(Strategia) :
+class help(Strategia) :
    def pobierzDane(self, idZadania) :
       pass
 
@@ -19,5 +19,7 @@ class Help(Strategia) :
 
    def main(self,args=None):
       print "Help:\n"
-
-      print "exit - wyjscie\n"
+      print "Komendy:"	
+      print "exit"
+      print "cd"
+      print "ls"

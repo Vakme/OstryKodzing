@@ -4,7 +4,7 @@ Zadania = {"Login"          :0,
            "ZlePolecenie"   :1,
            "exit"           :2,
            "Menu"           :3,
-           "Help"           :4,
+           "help"           :4,
            "ls"             :5,
            "cd"             :6,
            "Register"       :7}

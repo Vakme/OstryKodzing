@@ -59,8 +59,8 @@ class Kontroler:
         elif idZadania == Zadania["Menu"] :
             args.append(self)
             self.strategia = Menu()
-        elif idZadania == Zadania["Help"] :
-            self.strategia = Help()
+        elif idZadania == Zadania["help"] :
+            self.strategia = help()
         elif idZadania == Zadania["ls"] :
             args.append(self.model.serwer)
             self.strategia = ls()
