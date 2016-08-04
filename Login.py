@@ -23,6 +23,6 @@ class login(Strategia):
         self.model, self.widok, self.nick, self.haslo = args
         self.widok.czyscEkran()
         if self.pobierzDane(Zadania["Login"]) :
-            print "Witaj " + self.model.gracz["nick"] + "!"
+            print "Witaj " + self.model.gracz.nick + "!"
         else:
             print "Zly nick i/lub haslo!" 

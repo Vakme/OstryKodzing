@@ -14,33 +14,37 @@ class Menu(Strategia) :
         pass
 
 
-    def main(self, args=None) : # Argumentem jest funkcja czyszczace ekran
-        kontroler = args[0]
-        #kontroler.widok.czyscEkran()
+    def komendy(self) : 
+        self.kontroler.widok.czyscEkran()
         print "dostepne komendy:"
         print "login"
+        print "register"
         print "exit\n"
 
+
+    def main(self, args=None) : # Argumentem jest funkcja czyszczace ekran
+        self.kontroler = args[0]
+        self.komendy()
         cmd = None
         while True :
             cmd = raw_input()
             if cmd == "login" :                    # login
-                kontroler.widok.czyscEkran()
-                print "Nick: "
+                self.kontroler.widok.czyscEkran()
+                print "Nick: ",
                 self.nick = raw_input()
-                print "Haslo: "
+                print "Haslo: ",
                 self.haslo = raw_input()
-                break
+                self.kontroler.aktualizacja(Zadania["Login"], 
+                                           (self.nick, self.haslo))
+                return
+            elif cmd == "register" :
+                self.kontroler.aktualizacja(Zadania["Register"]) 
+                return
             elif cmd == "exit" :                   # exit
-                break
+                self.kontroler.widok.czyscEkran()
+                self.kontroler.aktualizacja(Zadania["exit"])
+                return
             else :
-                kontroler.widok.czyscEkran()
-                print "dostepne komendy:"
-                print "login"
-                print "exit\n"
-        if cmd == "exit" :
-            kontroler.widok.czyscEkran()
-            kontroler.aktualizacja(Zadania["exit"])
-        kontroler.aktualizacja(Zadania["Login"], (self.nick, self.haslo))
+                self.komendy()
 
 

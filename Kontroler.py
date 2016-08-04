@@ -15,6 +15,7 @@ from Menu import *
 from Help import *
 from ls import *
 from cd import *
+from Register import *
 
 class Kontroler:
     def __init__(self, nowyWidok = 0, nowyModel = 0) :
@@ -49,8 +50,8 @@ class Kontroler:
                 args.append(self.model)
                 args.append(self.widok)
                 if Args :
-                    args.append(Args[0])
-                    args.append(Args[1])
+                    args.append(Args[0]) #nick
+                    args.append(Args[1]) #haslo
                 self.strategia = login()
         elif idZadania == Zadania["exit"] :
             args.append(self.widok.czyscEkran)
@@ -67,5 +68,11 @@ class Kontroler:
             args.append(self.model.serwer)
             args.append(Args)
             self.strategia = cd()
+        elif idZadania == Zadania["Register"] :
+            if self.model.gracz :
+                self.strategia = ZlePolecenie()
+            else :
+                args.append(self)
+                self.strategia = Register()
         if self.strategia != 0 :
             self.strategia.main(args)
