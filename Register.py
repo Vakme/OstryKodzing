@@ -10,16 +10,15 @@ class Register :
 
 
     def wyslijDane(self, idZadania) :
-        #if idZadania == Zadania["register"] :
         self.kontroler.model.wyslijDane(Zadania["Register"], 
-                                       [self.nick, self.haslo])
+                                       [self.login, self.haslo])
 
 
     def main(self, args=None) : # args: [kontroler]
         self.kontroler = args[0]
         self.kontroler.widok.czyscEkran()
         print "Nick: ",
-        self.nick = raw_input()
+        self.login = raw_input()
         while True :
             print "Haslo: ",
             self.haslo = raw_input()

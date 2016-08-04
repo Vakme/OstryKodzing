@@ -60,7 +60,7 @@ class Model :
         if idZadania == Zadania["Register"] :
             return self.zarejestruj(args)
 
-    def zarejestruj(self, args) : # args: [nick, haslo]
+    def zarejestruj(self, args) : # args: [login, haslo]
         import random
         nowyGracz = None
         while nowyGracz == None :
@@ -69,23 +69,15 @@ class Model :
             c = random.randrange(0,256)
             d = random.randrange(0,256)
             noweIP = str(a)+"."+str(b)+"."+str(c)+"."+str(d)
-            nowyGracz = Gracz.create(nick=args[0], haslo=args[1], ip=noweIP)
+            nowyGracz = Gracz.create(login=args[0], nick=args[0], haslo=args[1], ip=noweIP)
         self.zaloguj([args[0], args[1]]) 
         return True
 
 
     def zaloguj(self, args) : # potrzebuje w args: [nick, haslo]
 #=================================== Na czas testow
-        #if args[0] != Gracz2["nick"] :
-        #    self.error = Error["zlyNick"]
-        #    return False
-        #if args[1] != Gracz2["haslo"] :
-        #    self.error = Error["zleHaslo"]
-        #    return False
-        #self.gracz = Gracz2
         self.serwer.pliki = Pliki
         self.serwer.nazwaSerwera = NazwaSerwera
-        #self.serwer.ip = Gracz2["ip"]
 #=================================================#
         try :
             self.gracz = Gracz.get(Gracz.login == args[0])
