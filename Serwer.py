@@ -4,8 +4,8 @@
 from BazaDanych import *
 
 class Serwer(BazaModel) :
-    id =  peewee.PrimaryKeyField()
+    id = peewee.PrimaryKeyField()
     idGracza = peewee.IntegerField()
     ip = peewee.CharField()
     nazwaSerwera = peewee.CharField()
-    pliki = None
+    pliki = {}

@@ -11,30 +11,6 @@ from Serwer import *
 from ListaPlikow import *
 
 
-#===================================== Na czas testow
-Gracz2 = {"nick"          :"user", 
-         "haslo"         :"123", 
-         "ip"            :"212.191.227.106",}
-
-Pliki2 =         {"/"            :Type["dir"]}
-Pliki2["/"] =    {"bin"          :Type["dir"],
-                 "hello.txt"    :Type["txt"]}
-Pliki2["/bin"] =  {"exit"        :Type["exec"],
-                  "Help"        :Type["exec"],
-                  "ls"          :Type["exec"],
-                  "cd"          :Type["exec"]}
-
-NazwaSerwera = "HomeServer"
-#===================================================#
-
-#class Serwer :
-#    def __init__(self) :
-#        self.pliki = None
-#        self.nazwaSerwera = None
-#        self.ip = None
-#        self.pwd = '/' # sciezka do katalogu, w ktorym znajduje sie gracz
-
-
 class Model :
     def __init__(self, nowyKontroler = 0, nowyWidok = 0) :
         self.kontroler = nowyKontroler
@@ -74,7 +50,9 @@ class Model :
             d = random.randrange(0,256)
             noweIP = str(a)+"."+str(b)+"."+str(c)+"."+str(d)
             nowyGracz = Gracz.create(login=args[0], nick=args[0], haslo=args[1], ip=noweIP, pwd="/")
-        Serwer.create(id=nowyGracz.id, ip=noweIP, nazwaSerwera="HomeServer") 
+        Serwer.create(id=nowyGracz.id, ip=noweIP, nazwaSerwera="HomeServer")
+        ListaPlikow.create(idSerwera=nowyGracz.id, sciezka="/", pliki="bin;0|hello.txt;1")
+        ListaPlikow.create(idSerwera=nowyGracz.id, sciezka="/bin", pliki="exit;2|help;2|ls;2|cd;2") 
         self.zaloguj([args[0], args[1]]) 
         return True
 
@@ -87,6 +65,11 @@ class Model :
             return False
         else :
             self.serwer = Serwer.get(Serwer.idGracza == self.gracz.id)
-            self.serwer.pliki = Pliki2 # TESTOWO
+            for listaPlikow in ListaPlikow.select().where(ListaPlikow.idSerwera == self.serwer.id) :
+                print listaPlikow
+                self.serwer.pliki[listaPlikow.sciezka] = {}
+                for plik in listaPlikow.pliki.split("|") :
+                    nazwa, typ = plik.split(";")
+                    self.serwer.pliki[listaPlikow.sciezka].setdefault(nazwa,typ)
             self.error = Error["brakBledow"]
             return True
