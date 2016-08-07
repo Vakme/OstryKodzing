@@ -16,7 +16,7 @@ from Help import *
 from ls import *
 from cd import *
 from Register import *
-
+from historia import *
 class Kontroler:
     def __init__(self, nowyWidok = 0, nowyModel = 0) :
         self.widok = nowyWidok
@@ -40,7 +40,8 @@ class Kontroler:
         
 
     def aktualizacja(self, idZadania, Args=None): # analizuje dzialania usera i zleca wykonanie odpowiednich dzialan
-        args = []   # umieszczone tu zmienne wyladuja w argumentach metody main w zadaniu
+        args = []   # umieszczone tu zmienne wyladuja w argumentach metody main w zadaniu	
+       
         if idZadania == Zadania["ZlePolecenie"] :
             self.strategia = ZlePolecenie()
         elif idZadania == Zadania["Login"] :
@@ -68,6 +69,8 @@ class Kontroler:
             args.append(self.model)
             args.append(Args)
             self.strategia = cd()
+        elif idZadania == Zadania["historia"] :
+            self.strategia=historia()
         elif idZadania == Zadania["Register"] :
             if self.model.gracz :
                 self.strategia = ZlePolecenie()

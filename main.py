@@ -2,11 +2,9 @@
 
 # importy zewnetrzne
 
-
 # nasze importy
 from Menu import *
 from Widok import *
-from Kontroler import *
 from Model import *
 
 #===== Inicjalizacja

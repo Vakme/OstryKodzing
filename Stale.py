@@ -7,7 +7,8 @@ Zadania = {"Login"          :0,
            "help"           :4,
            "ls"             :5,
            "cd"             :6,
-           "Register"       :7}
+           "Register"       :7,
+	       "historia"       :8 }
 
 
 Error = {"brakBledow"   :0,
@@ -18,6 +19,8 @@ Error = {"brakBledow"   :0,
 Type = {"dir"   :0,
         "txt"   :1,
         "exec"  :2}
+
+
 
 class bcolors:
     HEADER = '\033[95m'

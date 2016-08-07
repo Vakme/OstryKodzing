@@ -2,11 +2,10 @@
 
 # importy zewnetrzne
 
-
 # nasz importy
 from Stale import *
 from Kontroler import *
-
+from historia import *
 
 class Widok:
     def __init__(self) :
@@ -31,13 +30,16 @@ class Widok:
 
     def obslugaKonsoli(self) : # Glowna petla gry, gdy juz jestesmy zalogowani
         if self.model.gracz != None :
-            print self.model.gracz.nick+"@"+self.model.serwer.nazwaSerwera+" "+self.model.gracz.pwd+"> ", 
-        cmd = raw_input() # pobieranie stringu wpisanego przez gracza
+            print self.model.gracz.nick+"@"+self.model.serwer.nazwaSerwera+" "+self.model.gracz.pwd+"> ",  
+             
+        cmd = raw_input() 
+	Historia.append(cmd) 
         args = None
         tab = cmd.split()
         if len(tab) > 1 :
-            cmd, args = (tab[0], tab[1:]) # dzieli string na komende i jej atrybuty
+              cmd, args = (tab[0], tab[1:]) # dzieli string na komende i jej atrybuty
         if cmd in Zadania :
-            self.kontroler.aktualizacja(Zadania[cmd], args)
+              self.kontroler.aktualizacja(Zadania[cmd], args)
         else :
-            self.kontroler.aktualizacja(Zadania["ZlePolecenie"], cmd)
+              self.kontroler.aktualizacja(Zadania["ZlePolecenie"], cmd)
+                  

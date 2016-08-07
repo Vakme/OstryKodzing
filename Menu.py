@@ -28,6 +28,7 @@ class Menu(Strategia) :
         cmd = None
         while True :
             cmd = raw_input()
+            
             if cmd == "login" :                    # login
                 self.kontroler.widok.czyscEkran()
                 print "Nick: ",
